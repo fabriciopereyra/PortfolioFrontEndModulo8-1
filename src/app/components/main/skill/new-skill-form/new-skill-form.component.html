@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <h3>Actualizar Habilidad</h3>
+    <button class="btn-cancel" (click)="cancel()">X</button>
+    <form #f="ngForm" (ngSubmit)="saveSkill()" novalidate class="custom-form">
+        <label class="text-white" for="skillName"><b>Nombre</b></label>
+        <input type="text" placeholder="Ingrese el nombre" id="skillName" name="skillName" [(ngModel)]="skillName"
+            required="required">
+        <label class="text-white" for="skillProgress"><b>Progreso</b></label>
+        <input type="text" placeholder="Ingrese el progreso" id="skillProgress" name="skillProgress"
+            [(ngModel)]="skillProgress" required="required">
+        <button>Agregar habilidad</button>
+    </form>
+</div>

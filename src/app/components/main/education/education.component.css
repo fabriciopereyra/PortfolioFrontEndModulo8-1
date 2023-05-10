@@ -1,0 +1,24 @@
+section {
+    padding-top: 90px;
+    background: #3A3E4B;
+}
+
+.section-education-article {
+    margin-bottom: 10px;
+    border: solid 2px #FF9138;
+    border-radius: 24px;
+}
+
+.section-education-article:hover {
+    background: #FF9138;
+    border: solid 2px;
+}
+
+.section-education-text {
+    flex: 53%;
+}
+
+i {
+    color: white;
+    padding: 10px;
+}

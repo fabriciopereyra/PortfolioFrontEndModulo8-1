@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <h3>Nuevo proyecto</h3>
+    <button class="btn-cancel" (click)="cancel()">X</button>
+    <form #f="ngForm" (ngSubmit)="saveProject()" novalidate class="custom-form">
+        <label class="text-white" for="projectUrl"><b>Url</b></label>
+        <input type="text" placeholder="Ingrese la Urk" id="projectUrl" name="projectUrl"
+            [(ngModel)]="projectUrl" required="required">
+        <label class="text-white" for="projectImage"><b>Imagen</b></label>
+        <input type="text" placeholder="Ingrese la imagen" id="projectImage" name="projectImage"
+            [(ngModel)]="projectImage" required="required">
+        <label class="text-white" for="projectTitle"><b>Titulo</b></label>
+        <input type="text" placeholder="Ingrese el titulo" id="projectTitle" name="projectTitle"
+            [(ngModel)]="projectTitle" required="required">
+        <label class="text-white" for="projectDescription"><b>Descripcion</b></label>
+        <input type="text" placeholder="Ingrese la descripcion" id="projectDescription" name="projectDescription"
+            [(ngModel)]="projectDescription" required="required">
+        <label class="text-white" for="projectPeriod"><b>Periodo</b></label>
+        <input type="text" placeholder="Ingrese el periodo" id="projectPeriod" name="projectPeriod"
+            [(ngModel)]="projectPeriod" required="required">
+        <label class="text-white" for="projectTechnology"><b>Tecnologia</b></label>
+        <input type="text" placeholder="Ingrese la tecnologia" id="projectTechnology" name="projectTechnology"
+            [(ngModel)]="projectTechnology" required="required">
+        <button>Agregar proyecto</button>
+    </form>
+</div>

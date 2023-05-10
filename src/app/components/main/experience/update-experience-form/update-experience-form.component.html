@@ -1,0 +1,24 @@
+<div class="container-fluid" *ngIf="experience">
+    <h3>Actualizar Experiencia</h3>
+    <button class="btn-cancel" (click)="cancel()">X</button>
+    <form #f="ngForm" (ngSubmit)="updateExperience()" novalidate class="custom-form">
+        <label class="text-white" for="experienceId"><b>Id</b></label>
+        <input type="text" id="experienceId" name="experienceId" [(ngModel)]="experience.id" readonly>
+        <label class="text-white" for="experienceUrl"><b>Url</b></label>
+        <input type="text" placeholder="Ingrese la URL" id="experienceUrl" name="experienceUrl"
+            [(ngModel)]="experience.experienceUrl" required="required">
+        <label class="text-white" for="experienceImage"><b>Imagen</b></label>
+        <input type="text" placeholder="Ingrese la imagen" id="experienceImage" name="experienceImage"
+            [(ngModel)]="experience.experienceImage" required="required">
+        <label class="text-white" for="experienceJobTitle"><b>Puesto</b></label>
+        <input type="text" placeholder="Ingrese el puesto" id="experienceJobTitle" name="experienceJobTitle"
+            [(ngModel)]="experience.experienceJobTitle" required="required">
+        <label class="text-white" for="experiencePeriod"><b>Periodo</b></label>
+        <input type="text" placeholder="Ingrese el periodo" id="experiencePeriod" name="experiencePeriod"
+            [(ngModel)]="experience.experiencePeriod" required="required">
+        <label class="text-white" for="experienceActivity"><b>Actividad</b></label>
+        <input type="text" placeholder="Ingrese la actividad" id="experienceActivity" name="experienceActivity"
+            [(ngModel)]="experience.experienceActivity" required="required">
+        <button>Actualizar experiencia</button>
+    </form>
+</div>

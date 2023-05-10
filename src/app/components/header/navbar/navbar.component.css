@@ -1,0 +1,64 @@
+/* Header */
+nav {
+    background-color: #3A3E4B;
+}
+
+.nav-transparent {
+    background-color: transparent;
+}
+
+.navbar-brand-image {
+    height: 60px;
+}
+
+.button-toggler {
+    border: 3px solid #FF9138;
+}
+
+.nav-link {
+    border-top: 3px solid transparent;
+    transform: translateY(-3px);
+}
+
+.nav-link:hover {
+    border-top: 3px solid #ff9138;
+    transform: translateY(-3px);
+}
+
+.navbar-length {
+    width: 90%;
+}
+
+.navbar-botton-container {
+    border: 3px solid #FF9138;
+    border-top-left-radius: 25px ;
+    border-bottom-left-radius: 25px;
+}
+
+@media screen and (max-width : 768px) {
+
+    .nav-link {
+        border: 0;
+    }
+
+    .nav-link:hover {
+        border-top: 0;
+    }
+
+    a>span:hover{
+        border-top: 3px solid #ff9138;
+    }
+
+    .navbar-botton-container {
+        border: 3px solid #FF9138;
+        border-radius: 25px ;
+        width: 100%;
+    }
+
+    .navbar-botton-container:hover {
+        border: 3px solid #FF9138;
+        border-radius: 25px ;
+        width: 100%;
+    }
+
+}

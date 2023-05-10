@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <h3>Iniciar sesion</h3>
+    <button class="btn-cancel" (click)="cancel()">X</button>
+    <form class="custom-form" #f="ngForm" (ngSubmit)="onLogIn()" novalidate>
+        <label class="text-white" for="userName"><b>Username</b></label>
+        <input type="text" placeholder="Enter user name" id="userName" name="userName" [(ngModel)]="userName"
+            required="required" />
+        <label class="text-white" for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="password" name="password" [(ngModel)]="password"
+            required="required" />
+        <button>Iniciar sesion</button>
+    </form>
+</div>

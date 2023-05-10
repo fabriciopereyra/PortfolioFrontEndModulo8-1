@@ -1,0 +1,9 @@
+section {
+    padding-top: 80px;
+    background: #3A3E4B;
+}
+
+.section-aboutme-article {
+    text-align: justify;
+    font-size: 2rem;
+}

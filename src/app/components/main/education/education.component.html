@@ -1,0 +1,32 @@
+<section id="section-education">
+  <header class="section-header">
+    <h3>
+      Mi Educación
+      <i class="bi bi-plus-square-dotted" routerLink="/newEducationForm" *ngIf="isLogged"></i>
+    </h3>
+  </header>
+  <div class="section-body" *ngFor="let education of educations">
+    <article class="section-education-article d-flex flex-wrap">
+      <a [href]="education.educationUrl" target="_blank" rel="noopener noreferrer">
+        <img src=" assets/img/iconArgProSM.ico" [alt]="education.educationUrl">
+      </a>
+      <ul class="section-education-text text-white">
+        <li>
+          <h4>Institucion</h4>
+          <p>{{education.educationInstitution}}</p>
+        </li>
+        <li>
+          <h4>Titulo</h4>
+          <p>{{education.educationTitle}}</p>
+        </li>
+        <li>
+          <h4>Periodo:</h4>
+          <p>{{education.educationPeriod}}</p>
+        </li>
+      </ul>
+      <i class="bi bi-pencil-square" routerLink="/updateEducationForm/{{education.id}}" *ngIf="isLogged"></i>
+      <i class="bi bi-trash-fill" (click)="deleteEducation(education.id)" *ngIf="isLogged"></i>
+    </article>
+  </div>
+  <br>
+</section>

@@ -1,0 +1,24 @@
+<div class="container-fluid" *ngIf="education">
+    <h3>Actualizar Educacion</h3>
+    <button class="btn-cancel" (click)="cancel()">X</button>
+    <form #f="ngForm" (ngSubmit)="updateEducation()" novalidate class="custom-form">
+        <label class="text-white" for="educationId"><b>Id</b></label>
+        <input type="text" id="educationId" name="educationId" [(ngModel)]="education.id" readonly>
+        <label class="text-white" for="educationUrl"><b>Url</b></label>
+        <input type="text" placeholder="Ingrese la URL" id="educationUrl" name="educationUrl"
+            [(ngModel)]="education.educationUrl" required="required">
+        <label class="text-white" for="educationImage"><b>Imagen</b></label>
+        <input type="text" placeholder="Ingrese la imagen" id="educationImage" name="educationImage"
+            [(ngModel)]="education.educationImage" required="required">
+        <label class="text-white" for="educationInstitution"><b>Institucion</b></label>
+        <input type="text" placeholder="Ingrese la institucion" id="educationInstitution" name="educationInstitution"
+            [(ngModel)]="education.educationInstitution" required="required">
+        <label class="text-white" for="educationTitle"><b>Titulo</b></label>
+        <input type="text" placeholder="Ingrese el titulo" id="educationTitle" name="educationTitle"
+            [(ngModel)]="education.educationTitle" required="required">
+        <label class="text-white" for="experiencePeriod"><b>Periodo</b></label>
+        <input type="text" placeholder="Ingrese el periodo" id="experiencePeriod" name="experiencePeriod"
+            [(ngModel)]="education.educationPeriod" required="required">
+        <button>Actualizar educacion</button>
+    </form>
+</div>

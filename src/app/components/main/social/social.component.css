@@ -1,0 +1,21 @@
+.aside-container {
+    float: left;
+    margin-top: 150px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.aside-icon {
+    height: 70px;
+    width: 70px;
+}
+
+@media screen and (max-width : 478px) {
+    aside {
+        visibility: hidden;
+    }
+}
+
+.aside-hidden {
+    visibility: hidden;
+}

@@ -1,0 +1,20 @@
+<div class="container-fluid" *ngIf="userProfile">
+    <h3>Actualizar Experiencia</h3>
+    <button class="btn-cancel" (click)="cancel()">X</button>
+    <form #f="ngForm" (ngSubmit)="updateUserProfile()" novalidate class="custom-form">
+        <label class="text-white" for="userProfileName"><b>Nombre</b></label>
+        <input type="text" placeholder="Ingrese el nombre" id="userProfileName" name="userProfileName"
+            [(ngModel)]="userProfile.userProfileName">
+        <label class="text-white" for="userProfileSurname"><b>Apellido</b></label>
+        <input type="text" placeholder="Ingrese la URL" id="userProfileSurname" name="userProfileSurname"
+            [(ngModel)]="userProfile.userProfileSurname" required="required">
+        <label class="text-white" for="userProfileAbout"><b>Descripcion</b></label>
+        <input type="text" placeholder="Ingrese la Descripcion" id="userProfileAbout" name="userProfileAbout"
+            [(ngModel)]="userProfile.userProfileAbout" required="required">
+        <label class="text-white" for="userProfileImage"><b>Imagen</b></label>
+        <input type="file" placeholder="Ingrese la imagen" id="userProfileImage" name="userProfileImage"
+            [(ngModel)]="userProfile.userProfileImage" (change)="uploadUserProfileImage($event)"
+            accept=".jpg, .jpeg, .png">
+        <button>Actualizar usuario</button>
+    </form>
+</div>

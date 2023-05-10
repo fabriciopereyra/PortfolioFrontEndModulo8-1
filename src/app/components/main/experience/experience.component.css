@@ -1,0 +1,28 @@
+section {
+    padding-top: 90px;
+    background: #3A3E4B;
+}
+
+.section-experience-article {
+    margin-bottom: 10px;
+    border: solid 2px #FF9138;
+    border-radius: 24px;
+}
+
+.section-experience-article:hover {
+    background: #FF9138;
+    border: solid 2px;
+}
+
+.section-experience-text {
+    flex: 53%;
+}
+
+i {
+    color: white;
+    padding: 10px;
+}
+
+section > div {
+    background: #3A3E4B;
+}
