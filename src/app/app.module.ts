@@ -30,9 +30,6 @@ import { UpdateProjectFormComponent } from './components/main/project/update-pro
 import { NewSkillFormComponent } from './components/main/skill/new-skill-form/new-skill-form.component';
 import { UpdateSkillFormComponent } from './components/main/skill/update-skill-form/update-skill-form.component';
 import { UpdateHeroFormComponent } from './components/main/hero/update-hero-form/update-hero-form.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -67,8 +64,6 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     ModalComponent,
     HttpClientModule,
     FormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
   ],
   providers: [InterceptorService],
   bootstrap: [AppComponent],
