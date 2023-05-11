@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/portdolio-front-end-modulo8",
+    "public": "dist/portfolio-front-end-modulo8",
     "ignore": [
       "firebase.json",
       "**/.*",

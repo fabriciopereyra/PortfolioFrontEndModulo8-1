@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Skill } from '../model/skill';
 import { TokenService } from './token.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SkillService {
-  skillURL = 'http://localhost:8080/skill/';
+  URL = environment.URL + 'skill/';
 
   constructor(
     private httpClient: HttpClient,
@@ -16,11 +17,11 @@ export class SkillService {
   ) {}
 
   public getSkill(id: number): Observable<Skill> {
-    return this.httpClient.get<Skill>(this.skillURL + `getSkill/${id}`);
+    return this.httpClient.get<Skill>(this.URL + `getSkill/${id}`);
   }
 
   public getSkills(): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(this.skillURL + 'getSkills');
+    return this.httpClient.get<Skill[]>(this.URL + 'getSkills');
   }
 
   public saveSkill(skill: Skill): Observable<any> {
@@ -30,7 +31,7 @@ export class SkillService {
       }),
     };
     return this.httpClient.post<any>(
-      this.skillURL + `saveSkill`,
+      this.URL + `saveSkill`,
       skill,
       httpOptions
     );
@@ -43,7 +44,7 @@ export class SkillService {
       }),
     };
     return this.httpClient.put<any>(
-      this.skillURL + `updateSkill/${id}`,
+      this.URL + `updateSkill/${id}`,
       skill,
       httpOptions
     );
@@ -56,7 +57,7 @@ export class SkillService {
       }),
     };
     return this.httpClient.delete<any>(
-      this.skillURL + `deleteSkill/${id}`,
+      this.URL + `deleteSkill/${id}`,
       httpOptions
     );
   }

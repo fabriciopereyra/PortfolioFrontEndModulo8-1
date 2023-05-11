@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 import { Project } from '../model/project';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  projectURL = 'http://localhost:8080/project/';
+  URL = environment.URL + 'project/';
 
   constructor(
     private httpClient: HttpClient,
@@ -16,11 +17,11 @@ export class ProjectService {
   ) {}
 
   public getProject(id: number): Observable<Project> {
-    return this.httpClient.get<Project>(this.projectURL + `getProject/${id}`);
+    return this.httpClient.get<Project>(this.URL + `getProject/${id}`);
   }
 
   public getProjects(): Observable<Project[]> {
-    return this.httpClient.get<Project[]>(this.projectURL + 'getProjects');
+    return this.httpClient.get<Project[]>(this.URL + 'getProjects');
   }
 
   public saveProject(project: Project): Observable<any> {
@@ -30,7 +31,7 @@ export class ProjectService {
       }),
     };
     return this.httpClient.post<any>(
-      this.projectURL + `saveProject`,
+      this.URL + `saveProject`,
       project,
       httpOptions
     );
@@ -43,7 +44,7 @@ export class ProjectService {
       }),
     };
     return this.httpClient.put<any>(
-      this.projectURL + `updateProject/${id}`,
+      this.URL + `updateProject/${id}`,
       project,
       httpOptions
     );
@@ -56,7 +57,7 @@ export class ProjectService {
       }),
     };
     return this.httpClient.delete<any>(
-      this.projectURL + `deleteProject/${id}`,
+      this.URL + `deleteProject/${id}`,
       httpOptions
     );
   }

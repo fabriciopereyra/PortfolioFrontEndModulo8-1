@@ -15,6 +15,9 @@
         <input type="file" placeholder="Ingrese la imagen" id="userProfileImage" name="userProfileImage"
             [(ngModel)]="userProfile.userProfileImage" (change)="uploadUserProfileImage($event)"
             accept=".jpg, .jpeg, .png">
+        <div>
+            <img class="section-hero-header-image" [src]="imageService.url" alt="Foto de perfil">
+        </div>
         <button>Actualizar usuario</button>
     </form>
 </div>

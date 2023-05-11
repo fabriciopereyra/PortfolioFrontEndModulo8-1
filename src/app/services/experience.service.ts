@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Experience } from '../model/experience';
 import { TokenService } from './token.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExperienceService {
-  experienceURL = 'http://localhost:8080/experience/';
+  URL = environment.URL + 'experience/';
 
   constructor(
     private httpClient: HttpClient,
@@ -16,11 +17,11 @@ export class ExperienceService {
   ) {}
 
   public detail(id: number): Observable<Experience> {
-    return this.httpClient.get<Experience>(this.experienceURL + `detail/${id}`);
+    return this.httpClient.get<Experience>(this.URL + `detail/${id}`);
   }
 
   public findAll(): Observable<Experience[]> {
-    return this.httpClient.get<Experience[]>(this.experienceURL + 'findAll');
+    return this.httpClient.get<Experience[]>(this.URL + 'findAll');
   }
 
   public saveExperience(experience: Experience): Observable<any> {
@@ -30,7 +31,7 @@ export class ExperienceService {
       }),
     };
     return this.httpClient.post<any>(
-      this.experienceURL + `create`,
+      this.URL + `create`,
       experience,
       httpOptions
     );
@@ -43,7 +44,7 @@ export class ExperienceService {
       }),
     };
     return this.httpClient.put<any>(
-      this.experienceURL + `update/${id}`,
+      this.URL + `update/${id}`,
       experience,
       httpOptions
     );
@@ -56,7 +57,7 @@ export class ExperienceService {
       }),
     };
     return this.httpClient.delete<any>(
-      this.experienceURL + `delete/${id}`,
+      this.URL + `delete/${id}`,
       httpOptions
     );
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfile } from 'src/app/model/user-profile';
+import { ImageService } from 'src/app/services/image.service';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class UpdateHeroFormComponent implements OnInit {
   constructor(
     private userProfileService: UserProfileService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public imageService: ImageService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class UpdateHeroFormComponent implements OnInit {
 
   updateUserProfile(): void {
     const id = this.activatedRoute.snapshot.params['id'];
+    this.userProfile.userProfileImage = this.imageService.url;
     this.userProfileService.updateUserProfile(id, this.userProfile).subscribe(
       (data) => {
         this.router.navigate(['']);
@@ -43,7 +46,11 @@ export class UpdateHeroFormComponent implements OnInit {
     );
   }
 
-  uploadUserProfileImage($event: any): void {}
+  uploadUserProfileImage($event: any) {
+    const id = this.activatedRoute.snapshot.params['id'];
+    const name = "profileImage_" + id;
+    this.imageService.uploadImage($event, name);
+  }
 
   cancel(): void {
     this.router.navigate(['']);

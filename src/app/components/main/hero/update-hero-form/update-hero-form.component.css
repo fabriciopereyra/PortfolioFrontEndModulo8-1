@@ -1,4 +1,4 @@
-div {
+.container-fluid {
     background: #3A3E4B;
     height: 1000px;
     padding-top: 110px;
@@ -49,4 +49,10 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.section-hero-header-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
 }

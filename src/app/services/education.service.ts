@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
 import { Observable } from 'rxjs';
 import { Education } from '../model/education';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EducationService {
-  educationURL = 'http://localhost:8080/education/';
+  URL = environment.URL + 'education/';
 
   constructor(
     private httpClient: HttpClient,
@@ -17,13 +18,13 @@ export class EducationService {
 
   public getEducation(id: number): Observable<Education> {
     return this.httpClient.get<Education>(
-      this.educationURL + `getEducation/${id}`
+      this.URL + `getEducation/${id}`
     );
   }
 
   public getEducations(): Observable<Education[]> {
     return this.httpClient.get<Education[]>(
-      this.educationURL + 'getEducations'
+      this.URL + 'getEducations'
     );
   }
 
@@ -34,7 +35,7 @@ export class EducationService {
       }),
     };
     return this.httpClient.post<any>(
-      this.educationURL + `saveEducation`,
+      this.URL + `saveEducation`,
       education,
       httpOptions
     );
@@ -47,7 +48,7 @@ export class EducationService {
       }),
     };
     return this.httpClient.put<any>(
-      this.educationURL + `updateEducation/${id}`,
+      this.URL + `updateEducation/${id}`,
       education,
       httpOptions
     );
@@ -60,7 +61,7 @@ export class EducationService {
       }),
     };
     return this.httpClient.delete<any>(
-      this.educationURL + `deleteEducation/${id}`,
+      this.URL + `deleteEducation/${id}`,
       httpOptions
     );
   }

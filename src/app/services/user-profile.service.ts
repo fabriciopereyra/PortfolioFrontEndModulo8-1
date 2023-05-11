@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserProfile } from '../model/user-profile';
 import { TokenService } from './token.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserProfileService {
-  userProfileURL = 'http://localhost:8080/userProfile/';
+  
+  URL = environment.URL + 'userProfile/';
 
   constructor(
     private httpClient: HttpClient,
@@ -17,13 +19,13 @@ export class UserProfileService {
 
   public getUserProfile(id: number): Observable<UserProfile> {
     return this.httpClient.get<UserProfile>(
-      this.userProfileURL + `getUserProfile/${id}`
+      this.URL + `getUserProfile/${id}`
     );
   }
 
   // public getUserProfiles(): Observable<UserProfile[]> {
   //   return this.httpClient.get<UserProfile[]>(
-  //     this.userProfileURL + 'getUserProfiles'
+  //     this.URL + 'getUserProfiles'
   //   );
   // }
 
@@ -34,7 +36,7 @@ export class UserProfileService {
   //     }),
   //   };
   //   return this.httpClient.post<any>(
-  //     this.userProfileURL + `saveUserProfile`,
+  //     this.URL + `saveUserProfile`,
   //     userProfile,
   //     httpOptions
   //   );
@@ -50,7 +52,7 @@ export class UserProfileService {
       }),
     };
     return this.httpClient.put<any>(
-      this.userProfileURL + `updateUserProfile/${id}`,
+      this.URL + `updateUserProfile/${id}`,
       userProfile,
       httpOptions
     );
@@ -63,7 +65,7 @@ export class UserProfileService {
   //     }),
   //   };
   //   return this.httpClient.delete<any>(
-  //     this.userProfileURL + `deleteUserProfile/${id}`,
+  //     this.URL + `deleteUserProfile/${id}`,
   //     httpOptions
   //   );
   // }
