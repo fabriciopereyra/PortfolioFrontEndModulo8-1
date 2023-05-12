@@ -9,7 +9,7 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
   styleUrls: ['./aboutme.component.css'],
 })
 export class AboutmeComponent {
-  userProfile: UserProfile = null;
+  userProfile: UserProfile = new UserProfile('', '', '', '');
 
   isLogged = false;
 

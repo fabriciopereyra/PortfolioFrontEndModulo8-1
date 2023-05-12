@@ -10,14 +10,18 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
   styleUrls: ['./update-hero-form.component.css'],
 })
 export class UpdateHeroFormComponent implements OnInit {
-  userProfile: UserProfile;
+  userProfile: UserProfile = new UserProfile('', '', '', '');
+
+
 
   constructor(
     private userProfileService: UserProfileService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     public imageService: ImageService
-  ) {}
+  ) {
+
+  }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];

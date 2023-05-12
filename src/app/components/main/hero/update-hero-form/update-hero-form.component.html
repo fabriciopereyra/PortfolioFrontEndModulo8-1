@@ -1,5 +1,5 @@
 <div class="container-fluid" *ngIf="userProfile">
-    <h3>Actualizar Experiencia</h3>
+    <h3>Actualizar Usuario</h3>
     <button class="btn-cancel" (click)="cancel()">X</button>
     <form #f="ngForm" (ngSubmit)="updateUserProfile()" novalidate class="custom-form">
         <label class="text-white" for="userProfileName"><b>Nombre</b></label>
@@ -16,7 +16,7 @@
             [(ngModel)]="userProfile.userProfileImage" (change)="uploadUserProfileImage($event)"
             accept=".jpg, .jpeg, .png">
         <div>
-            <img class="section-hero-header-image" [src]="imageService.url" alt="Foto de perfil">
+            <img class="section-hero-header-image" [src]="imageService.url" alt=" ">
         </div>
         <button>Actualizar usuario</button>
     </form>

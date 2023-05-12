@@ -9,14 +9,21 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
   styleUrls: ['./hero.component.css'],
 })
 export class HeroComponent implements OnInit {
-  userProfile: UserProfile = null;
+  userProfile: UserProfile = new UserProfile('', '', '', '');
+
+  userProfileService: UserProfileService = null;
+
+  tokenService: TokenService = null;
 
   isLogged = false;
 
   constructor(
-    private userProfileService: UserProfileService,
-    private tokenService: TokenService
-  ) {}
+    private userProfileServices: UserProfileService,
+    private tokenServices: TokenService
+  ) {
+    this.userProfileService = userProfileServices;
+    this.tokenService = tokenServices;
+  }
 
   ngOnInit(): void {
     this.loadUserProfile();
