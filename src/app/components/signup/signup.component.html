@@ -1,0 +1,28 @@
+<div class="container-fluid form">
+    <h3>
+        Crear Usuario
+        <button class="close-form" (click)="closeForm()">X</button>
+    </h3>
+    <div class="alert alert-danger" role="alert" *ngIf="isSignUpFail">
+        {{errorMessage}}
+        <button class="close-alert" (click)="closeMessage()">X</button>
+    </div>
+    <form class="custom-form" #f="ngForm" (ngSubmit)="onSignUp()" novalidate>
+        <label class="text-white" for="name"><b>Nombre</b></label>
+        <input type="text" placeholder="Ingrese nombre" id="name" name="name" [(ngModel)]="name" required="required"
+            (focus)="closeMessage()" />
+        <label class="text-white" for="userName"><b>Nombre de usuario</b></label>
+        <input type="text" placeholder="Ingrese nombre de usuario" id="userName" name="userName" [(ngModel)]="userName"
+            required="required" (focus)="closeMessage()" />
+        <label class="text-white" for="email"><b>Email</b></label>
+        <input type="text" placeholder="Ingrese email" id="email" name="email" [(ngModel)]="email" required="required"
+            (focus)="closeMessage()" />
+        <label class="text-white" for="password"><b>Contraseña</b></label>
+        <input type="password" placeholder="Enter Password" id="password" name="password" [(ngModel)]="password"
+            required="required" (focus)="closeMessage()" />
+        <label class="text-white" for="role"><b>Rol</b></label>
+        <input type="text" placeholder="Ingrese rol" id="role" name="role" [(ngModel)]="role" required="required"
+            (focus)="closeMessage()" />
+        <button>Iniciar sesión</button>
+    </form>
+</div>

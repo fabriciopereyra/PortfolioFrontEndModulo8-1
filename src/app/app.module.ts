@@ -33,6 +33,7 @@ import { UpdateHeroFormComponent } from './components/main/hero/update-hero-form
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     NewSkillFormComponent,
     UpdateSkillFormComponent,
     UpdateHeroFormComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

@@ -42,7 +42,11 @@ export class ProjectComponent implements OnInit {
             this.loadProjects();
           },
           (err) => {
-            alert('No se pudo eliminar el proyecto');
+            if (err.status == 403) {
+              alert('Acción prohibida');
+            } else {
+              alert('No se pudo eliminar la educacion');
+            }
           }
         );
       }

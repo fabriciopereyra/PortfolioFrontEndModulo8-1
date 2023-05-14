@@ -49,7 +49,11 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         this.isLoginFail = true;
-        this.errorMessage = err.error.message;
+        if (err.status == 403) {
+          this.errorMessage = 'Acción prohibida'
+        } else {
+          this.errorMessage = err.error.message;
+        }
       }
     );
   }

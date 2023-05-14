@@ -42,7 +42,12 @@ export class EducationComponent implements OnInit {
             this.loadEducations();
           },
           (err) => {
-            alert('No se pudo eliminar la educacion');
+            if (err.status == 403) {
+              alert('Acción prohibida');
+            } else {
+              alert('No se pudo eliminar la educacion');
+            }
+            
           }
         );
       }

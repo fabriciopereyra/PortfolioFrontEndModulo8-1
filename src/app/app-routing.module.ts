@@ -11,6 +11,7 @@ import { UpdateProjectFormComponent } from './components/main/project/update-pro
 import { NewSkillFormComponent } from './components/main/skill/new-skill-form/new-skill-form.component';
 import { UpdateSkillFormComponent } from './components/main/skill/update-skill-form/update-skill-form.component';
 import { UpdateHeroFormComponent } from './components/main/hero/update-hero-form/update-hero-form.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'newSkillForm', component: NewSkillFormComponent},
   {path:'updateSkillForm/:id', component: UpdateSkillFormComponent},
   {path:'updateHeroForm/:id', component: UpdateHeroFormComponent},
+  {path:'signup', component: SignupComponent},
 ];
 
 @NgModule({

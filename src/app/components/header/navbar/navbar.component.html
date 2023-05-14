@@ -43,14 +43,22 @@
                         <span>Proyectos</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!isLogged">
                     <button class="nav-link text-white background-item-color navbar-botton-container" type="button"
-                        (click)="onLogIn()" *ngIf="!isLogged">
-                        <span>Log In</span>
+                        (click)="onLogIn()">
+                        <span>Iniciar sección</span>
                     </button>
+                </li>
+                    <li class="nav-item" *ngIf="isLogged">
                     <button class="nav-link text-white background-item-color navbar-botton-container" type="button"
-                        (click)="onLogOut()" *ngIf="isLogged">
-                        <span>Log Out</span>
+                        (click)="onLogOut()">
+                        <span>Cerrar sección</span>
+                    </button>
+                </li>
+                <li class="nav-item" *ngIf="isAdmin">
+                    <button class="nav-link text-white background-item-color navbar-botton-container" type="button"
+                        (click)="onSignUp()">
+                        <span>Crear usuario</span>
                     </button>
                 </li>
             </ul>

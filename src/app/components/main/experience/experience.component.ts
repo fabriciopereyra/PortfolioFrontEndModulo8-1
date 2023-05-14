@@ -42,7 +42,11 @@ export class ExperienceComponent implements OnInit {
             this.loadExperiences();
           },
           (err) => {
-            alert('No se pudo eliminar la experiencia');
+            if (err.status == 403) {
+              alert('Acción prohibida');
+            } else {
+              alert('No se pudo eliminar la educacion');
+            }
           }
         );
       }

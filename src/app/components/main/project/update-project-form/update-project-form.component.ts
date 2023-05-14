@@ -49,7 +49,11 @@ export class UpdateProjectFormComponent implements OnInit {
       (err) => {
         this.isUpdateFail = true;
         this.project.projectImage = "";
-        this.errorMessage = err.error.message;
+        if (err.status == 403) {
+          this.errorMessage = 'Acción prohibida'
+        } else {
+          this.errorMessage = err.error.message;
+        }
       }
     );
   }

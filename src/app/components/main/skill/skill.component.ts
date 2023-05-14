@@ -42,7 +42,11 @@ export class SkillComponent implements OnInit {
             this.loadSkills();
           },
           (err) => {
-            alert('No se pudo eliminar la habilidad');
+            if (err.status == 403) {
+              alert('Acción prohibida');
+            } else {
+              alert('No se pudo eliminar la educacion');
+            }
           }
         );
       }

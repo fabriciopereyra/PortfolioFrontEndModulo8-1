@@ -10,11 +10,21 @@ import { TokenService } from 'src/app/services/token.service';
 export class NavbarComponent implements OnInit {
   isLogged = false;
 
+  isAdmin = false;
+
   constructor(private router: Router, private tokenService: TokenService) {}
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
+      const authorities = this.tokenService.getAuthorities();
+      authorities.forEach((element) => {
+        if (element == 'ROLE_ADMIN') {
+          this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
+      });
     } else {
       this.isLogged = false;
     }
@@ -22,6 +32,10 @@ export class NavbarComponent implements OnInit {
 
   onLogIn(): void {
     this.router.navigate(['/login']);
+  }
+
+  onSignUp(): void {
+    this.router.navigate(['/signup']);
   }
 
   onLogOut(): void {

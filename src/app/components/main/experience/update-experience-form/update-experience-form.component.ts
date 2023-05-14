@@ -49,7 +49,11 @@ export class UpdateExperienceFormComponent implements OnInit {
       (err) => {
         this.isUpdateFail = true;
         this.experience.experienceImage = "";
-        this.errorMessage = err.error.message;
+        if (err.status == 403) {
+          this.errorMessage = 'Acción prohibida'
+        } else {
+          this.errorMessage = err.error.message;
+        }
       }
     );
   }
