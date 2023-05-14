@@ -1,22 +1,31 @@
-<div class="container-fluid">
-    <h3>Nueva Experiencia</h3>
-    <button class="btn-cancel" (click)="cancel()">X</button>
-    <form #f="ngForm" (ngSubmit)="saveExperience()" novalidate class="custom-form">
-        <label class="text-white" for="experienceUrl"><b>Url</b></label>
-        <input type="text" placeholder="Ingrese la URL" id="experienceUrl" name="experienceUrl"
-            [(ngModel)]="experienceUrl" required="required">
-        <label class="text-white" for="experienceImage"><b>Imagen</b></label>
-        <input type="text" placeholder="Ingrese la imagen" id="experienceImage" name="experienceImage"
-            [(ngModel)]="experienceImage" required="required">
+<div class="container-fluid form">
+    <h3>
+        Nueva Experiencia
+        <button class="close-form" (click)="closeForm()">X</button>
+    </h3>
+    <div class="alert alert-danger" role="alert" *ngIf="isSaveFail">
+        {{errorMessage}}
+        <button class="close-alert" (click)="closeMessage()">X</button>
+    </div>
+    <form class="custom-form" #f="ngForm" (ngSubmit)="saveExperience()" novalidate>
         <label class="text-white" for="experienceJobTitle"><b>Puesto</b></label>
         <input type="text" placeholder="Ingrese el puesto" id="experienceJobTitle" name="experienceJobTitle"
-            [(ngModel)]="experienceJobTitle" required="required">
+            [(ngModel)]="experienceJobTitle" required="required" (focus)="closeMessage()">
         <label class="text-white" for="experiencePeriod"><b>Periodo</b></label>
         <input type="text" placeholder="Ingrese el periodo" id="experiencePeriod" name="experiencePeriod"
-            [(ngModel)]="experiencePeriod" required="required">
+            [(ngModel)]="experiencePeriod" required="required" (focus)="closeMessage()">
         <label class="text-white" for="experienceActivity"><b>Actividad</b></label>
         <input type="text" placeholder="Ingrese la actividad" id="experienceActivity" name="experienceActivity"
-            [(ngModel)]="experienceActivity" required="required">
+            [(ngModel)]="experienceActivity" required="required" (focus)="closeMessage()">
+        <label class="text-white" for="experienceUrl"><b>Url</b></label>
+        <input type="text" placeholder="Ingrese la URL" id="experienceUrl" name="experienceUrl"
+            [(ngModel)]="experienceUrl" required="required" (focus)="closeMessage()">
+        <label class="text-white" for="experienceImage"><b>Imagen</b></label>
+        <input class="text-white" type="file" id="experienceImage" name="experienceImage"
+            (change)="uploadExperienceImage($event)" accept=".jpg, .jpeg, .png">
+        <div *ngIf="newImage">
+            <img class="experience-image" [src]="imageService.url" alt="Foto de perfil">
+        </div>
         <button>Agregar experiencia</button>
     </form>
 </div>

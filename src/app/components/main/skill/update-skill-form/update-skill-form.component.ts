@@ -9,7 +9,11 @@ import { SkillService } from 'src/app/services/skill.service';
   styleUrls: ['./update-skill-form.component.css']
 })
 export class UpdateSkillFormComponent implements OnInit {
-  skill: Skill = null;
+  skill: Skill = new Skill("", 0);
+
+  isUpdateFail = false;
+
+  errorMessage: string;
 
   constructor(
     private skillService: SkillService,
@@ -24,7 +28,7 @@ export class UpdateSkillFormComponent implements OnInit {
         this.skill = data;
       },
       (err) => {
-        alert('Error al actualizar habilidad');
+        alert('Error al cargar habilidad');
         this.router.navigate(['']);
       }
     );
@@ -34,16 +38,21 @@ export class UpdateSkillFormComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['id'];
     this.skillService.updateSkill(id, this.skill).subscribe(
       (data) => {
+        alert('Habilidad actualizada');
         this.router.navigate(['']);
       },
       (err) => {
-        alert('Error al actualizar habilidad');
-        this.router.navigate(['']);
+        this.isUpdateFail = true;
+        this.errorMessage = err.error.message;
       }
     );
   }
 
-  cancel(): void {
+  closeMessage(): void {
+    this.isUpdateFail = false;
+  }
+
+  closeForm(): void {
     this.router.navigate(['']);
   }
 }

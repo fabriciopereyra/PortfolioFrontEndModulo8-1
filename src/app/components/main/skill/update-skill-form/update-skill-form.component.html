@@ -1,15 +1,19 @@
-<div class="container-fluid" *ngIf="skill">
-    <h3>Actualizar Habilidad</h3>
-    <button class="btn-cancel" (click)="cancel()">X</button>
-    <form #f="ngForm" (ngSubmit)="updateSkill()" novalidate class="custom-form">
-        <label class="text-white" for="skillId"><b>Id</b></label>
-        <input type="text" id="skillId" name="skillId" [(ngModel)]="skill.id" readonly>
+<div class="container-fluid form">
+    <h3>
+        Actualizar Habilidad
+        <button class="close-form" (click)="closeForm()">X</button>
+    </h3>
+    <div class="alert alert-danger" role="alert" *ngIf="isUpdateFail">
+        {{errorMessage}}
+        <button class="close-alert" (click)="closeMessage()">X</button>
+    </div>
+    <form class="custom-form" #f="ngForm" (ngSubmit)="updateSkill()" novalidate>
         <label class="text-white" for="skillName"><b>Nombre</b></label>
         <input type="text" placeholder="Ingrese el nombre" id="skillName" name="skillName" [(ngModel)]="skill.skillName"
-            required="required">
+            required="required" (focus)="closeMessage()">
         <label class="text-white" for="skillProgress"><b>Progreso</b></label>
-        <input type="text" placeholder="Ingrese el progreso" id="skillProgress" name="skillProgress"
-            [(ngModel)]="skill.skillProgress" required="required">
+        <input type="number" placeholder="Ingrese el progreso" id="skillProgress" name="skillProgress"
+            [(ngModel)]="skill.skillProgress" required="required" (focus)="closeMessage()">
         <button>Actualizar habilidad</button>
     </form>
 </div>

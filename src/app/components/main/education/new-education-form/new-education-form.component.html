@@ -1,22 +1,31 @@
-<div class="container-fluid">
-    <h3>Nueva Educacion</h3>
-    <button class="btn-cancel" (click)="cancel()">X</button>
-    <form #f="ngForm" (ngSubmit)="saveEducation()" novalidate class="custom-form">
-        <label class="text-white" for="educationUrl"><b>Url</b></label>
-        <input type="text" placeholder="Ingrese la URL" id="educationUrl" name="educationUrl" [(ngModel)]="educationUrl"
-            required="required">
-        <label class="text-white" for="educationImage"><b>Imagen</b></label>
-        <input type="text" placeholder="Ingrese la imagen" id="educationImage" name="educationImage"
-            [(ngModel)]="educationImage" required="required">
-        <label class="text-white" for="educationInstitution"><b>Actividad</b></label>
+<div class="container-fluid form">
+    <h3>
+        Nueva Educación
+        <button class="close-form" (click)="closeForm()">X</button>
+    </h3>
+    <div class="alert alert-danger" role="alert" *ngIf="isSaveFail">
+        {{errorMessage}}
+        <button class="close-alert" (click)="closeMessage()">X</button>
+    </div>
+    <form class="custom-form" #f="ngForm" (ngSubmit)="saveEducation()" novalidate>
+        <label class="text-white" for="educationInstitution"><b>Institución</b></label>
         <input type="text" placeholder="Ingrese la institucion" id="educationInstitution" name="educationInstitution"
-            [(ngModel)]="educationInstitution" required="required">
+            [(ngModel)]="educationInstitution" required="required" (focus)="closeMessage()">
         <label class="text-white" for="educationTitle"><b>Titulo</b></label>
         <input type="text" placeholder="Ingrese el titulo" id="educationTitle" name="educationTitle"
-            [(ngModel)]="educationTitle" required="required">
+            [(ngModel)]="educationTitle" required="required" (focus)="closeMessage()">
         <label class="text-white" for="educationPeriod"><b>Periodo</b></label>
         <input type="text" placeholder="Ingrese el periodo" id="educationPeriod" name="educationPeriod"
-            [(ngModel)]="educationPeriod" required="required">
+            [(ngModel)]="educationPeriod" required="required" (focus)="closeMessage()">
+        <label class="text-white" for="educationUrl"><b>Url</b></label>
+        <input type="text" placeholder="Ingrese la URL" id="educationUrl" name="educationUrl" [(ngModel)]="educationUrl"
+            required="required" (focus)="closeMessage()">
+        <label class="text-white" for="educationImage"><b>Imagen</b></label>
+        <input class="text-white" type="file" id="educationImage" name="educationImage"
+            (change)="uploadEducationImage($event)" accept=".jpg, .jpeg, .png">
+        <div *ngIf="newImage">
+            <img class="education-image" [src]="imageService.url" alt="Foto de educación">
+        </div>
         <button>Agregar educacion</button>
     </form>
 </div>

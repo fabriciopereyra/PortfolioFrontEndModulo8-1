@@ -6,30 +6,38 @@
     </h3>
   </header>
   <div class="section-body" *ngFor="let project of projects">
-    <article class="section-project-article d-flex flex-wrap">
-      <a [href]="project.projectUrl" target="_blank" rel="noopener noreferrer">
-        <img src=" assets/img/iconArgProSM.ico" [alt]="project.projectUrl">
-      </a>
-      <ul class="section-project-text text-white">
-        <li>
-          <h4>Titulo</h4>
-          <p>{{project.projectTitle}}</p>
-        </li>
-        <li>
-          <h4>Periodo</h4>
-          <p>{{project.projectPeriod}}</p>
-        </li>
-        <li>
-          <h4>Descripcion</h4>
-          <p>{{project.projectDescription}}</p>
-        </li>
-        <li>
-          <h4>Tegnologias</h4>
-          <p>{{project.projectTechnology}}</p>
-        </li>
-      </ul>
-      <i class="bi bi-pencil-square" routerLink="/updateProjectForm/{{project.id}}" *ngIf="isLogged"></i>
-      <i class="bi bi-trash-fill" (click)="deleteProject(project.id)" *ngIf="isLogged"></i>
+    <article class="section-project-article">
+      <div class="row">
+        <div class="col-md-3">
+          <a [href]="project.projectUrl" target="_blank" rel="noopener noreferrer">
+            <img src={{project.projectImage}} [alt]="project.projectUrl">
+          </a>
+        </div>
+        <div class="col-md-9">
+          <ul class="section-project-text text-white">
+            <li>
+              <h4>Titulo</h4>
+              <p>{{project.projectTitle}}</p>
+            </li>
+            <li>
+              <h4>Periodo</h4>
+              <p>{{project.projectPeriod}}</p>
+            </li>
+            <li>
+              <h4>Descripcion</h4>
+              <p>{{project.projectDescription}}</p>
+            </li>
+            <li>
+              <h4>Tegnologias</h4>
+              <p>{{project.projectTechnology}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h3>
+        <i class="bi bi-pencil-square" routerLink="/updateProjectForm/{{project.id}}" *ngIf="isLogged"></i>
+        <i class="bi bi-trash-fill" (click)="deleteProject(project.id)" *ngIf="isLogged"></i>
+      </h3>
     </article>
   </div>
   <br>

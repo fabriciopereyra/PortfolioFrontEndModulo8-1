@@ -1,9 +1,13 @@
 <section id="section-hero" class="section-hero-background-image">
   <header class="section-header text-end">
-    <img class="section-hero-header-image" src={{userProfile.userProfileImage}} alt="Foto de perfil">
-    <i class="bi bi-pencil-square" routerLink="/updateHeroForm/1" *ngIf="isLogged"></i>
-    <h1 class="text-white">{{userProfile.userProfileName}} {{userProfile.userProfileSurname}}</h1>
-    <h2 class="text-white">Full Stack Developer Jr.</h2>    
+    <img class="section-hero-header-image" src={{userProfile.userProfileImage}} alt="Foto de perfil" *ngIf="userProfile.userProfileImage">
+    <h1 class="text-white">
+      {{userProfile.userProfileName}} {{userProfile.userProfileSurname}}
+    </h1>
+    <h2 class="text-white">
+      {{userProfile.userProfileTitle}}
+      <i class="bi bi-pencil-square" routerLink="/updateHeroForm/1" *ngIf="isLogged"></i>
+    </h2>
   </header>
   <div class="section-header d-flex justify-content-end">
     <article>

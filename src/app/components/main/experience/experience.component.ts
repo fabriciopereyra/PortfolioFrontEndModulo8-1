@@ -28,7 +28,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   public loadExperiences(): void {
-    this.experienceService.findAll().subscribe((data) => {
+    this.experienceService.getExperiences().subscribe((data) => {
       this.experiences = data;
     });
   }
@@ -37,7 +37,7 @@ export class ExperienceComponent implements OnInit {
     let question = confirm('¿Desea eliminar la experiencia?');
     if (question) {
       if (id != undefined) {
-        this.experienceService.delete(id).subscribe(
+        this.experienceService.deleteExperience(id).subscribe(
           (data) => {
             this.loadExperiences();
           },

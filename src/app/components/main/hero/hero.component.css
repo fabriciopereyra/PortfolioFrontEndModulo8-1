@@ -1,6 +1,10 @@
 section {
     padding-top: 80px;
 }
+i {
+    color: white;
+    padding: 10px;
+}
 
 .section-hero-background-image {
     background-image: url('../../../../assets/img/bgImage2.png');
@@ -9,14 +13,14 @@ section {
     background-size: cover;
 }
 
+.section-header {
+    margin-right: 50px;
+}
+
 .section-hero-header-image {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-}
-
-.section-header {
-    margin-right: 50px;
 }
 
 .section-hero-article-stack-icon {
@@ -24,7 +28,3 @@ section {
     width: 60px;
 }
 
-i {
-    color: white;
-    padding: 10px;
-}

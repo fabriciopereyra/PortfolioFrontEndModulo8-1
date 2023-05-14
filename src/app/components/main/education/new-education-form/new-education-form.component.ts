@@ -1,14 +1,16 @@
+import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Education } from 'src/app/model/education';
 import { EducationService } from 'src/app/services/education.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-new-education-form',
   templateUrl: './new-education-form.component.html',
   styleUrls: ['./new-education-form.component.css'],
 })
-export class NewEducationFormComponent {
+export class NewEducationFormComponent implements OnInit{
   educationUrl: string = '';
 
   educationImage: string = '';
@@ -19,15 +21,26 @@ export class NewEducationFormComponent {
 
   educationPeriod: string = '';
 
+  isSaveFail = false;
+
+  errorMessage: string;
+
+  newImage = false;
+
   constructor(
     private educationService: EducationService,
-    private router: Router
+    private router: Router,
+    public imageService: ImageService
   ) {}
+
+  ngOnInit(): void {
+    this.imageService.url = "";
+  }
 
   saveEducation(): void {
     const education = new Education(
       this.educationUrl,
-      this.educationImage,
+      this.imageService.url,
       this.educationTitle,
       this.educationPeriod,
       this.educationInstitution
@@ -38,13 +51,25 @@ export class NewEducationFormComponent {
         this.router.navigate(['']);
       },
       (err) => {
-        alert('Fallo');
-        this.router.navigate(['']);
+        this.isSaveFail = true;
+        this.errorMessage = err.error.message;
       }
     );
   }
 
-  cancel(): void {
+  uploadEducationImage($event: any) {
+    let dateTime = new Date();
+    const directory = "image/education/"
+    const name = 'educationImage_' + dateTime.getFullYear() + dateTime.getMonth() + dateTime.getDay() + dateTime.getHours() + dateTime.getMinutes() + dateTime.getSeconds();
+    this.imageService.uploadImage($event, directory, name);
+    this.newImage = true;
+  }
+
+  closeMessage(): void {
+    this.isSaveFail = false;
+  }
+
+  closeForm(): void {
     this.router.navigate(['']);
   }
 }

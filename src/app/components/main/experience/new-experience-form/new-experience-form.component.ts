@@ -1,14 +1,16 @@
+import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Experience } from 'src/app/model/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-new-experience-form',
   templateUrl: './new-experience-form.component.html',
   styleUrls: ['./new-experience-form.component.css'],
 })
-export class NewExperienceFormComponent {
+export class NewExperienceFormComponent implements OnInit {
   experienceUrl: string = '';
 
   experienceImage: string = '';
@@ -19,15 +21,26 @@ export class NewExperienceFormComponent {
 
   experienceActivity: string = '';
 
+  isSaveFail = false;
+
+  errorMessage: string;
+
+  newImage = false;
+
   constructor(
     private experienceService: ExperienceService,
-    private router: Router
+    private router: Router,
+    public imageService: ImageService
   ) {}
+
+  ngOnInit(): void {
+    this.imageService.url = "";
+  }
 
   saveExperience(): void {
     const experience = new Experience(
       this.experienceUrl,
-      this.experienceImage,
+      this.imageService.url,
       this.experienceJobTitle,
       this.experiencePeriod,
       this.experienceActivity
@@ -38,13 +51,25 @@ export class NewExperienceFormComponent {
         this.router.navigate(['']);
       },
       (err) => {
-        alert('Fallo');
-        this.router.navigate(['']);
+        this.isSaveFail = true;
+        this.errorMessage = err.error.message;
       }
     );
   }
 
-  cancel(): void {
+  uploadExperienceImage($event: any) {
+    let dateTime = new Date();
+    const directory = "image/experience/"
+    const name = 'experienceImage_' + dateTime.getFullYear() + dateTime.getMonth() + dateTime.getDay() + dateTime.getHours() + dateTime.getMinutes() + dateTime.getSeconds();
+    this.imageService.uploadImage($event, directory, name);
+    this.newImage = true;
+  }
+
+  closeMessage(): void {
+    this.isSaveFail = false;
+  }
+
+  closeForm(): void {
     this.router.navigate(['']);
   }
 }

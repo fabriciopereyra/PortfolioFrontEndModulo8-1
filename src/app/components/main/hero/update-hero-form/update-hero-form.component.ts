@@ -10,18 +10,20 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
   styleUrls: ['./update-hero-form.component.css'],
 })
 export class UpdateHeroFormComponent implements OnInit {
-  userProfile: UserProfile = new UserProfile('', '', '', '');
+  userProfile: UserProfile = new UserProfile('', '', '', '', '');
 
+  isUpdateFail = false;
 
+  errorMessage: string;
+
+  newImage = false;
 
   constructor(
     private userProfileService: UserProfileService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     public imageService: ImageService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
@@ -30,7 +32,7 @@ export class UpdateHeroFormComponent implements OnInit {
         this.userProfile = data;
       },
       (err) => {
-        alert('Error al actualizar experiencia');
+        alert('Error al cargar el usuario');
         this.router.navigate(['']);
       }
     );
@@ -41,22 +43,30 @@ export class UpdateHeroFormComponent implements OnInit {
     this.userProfile.userProfileImage = this.imageService.url;
     this.userProfileService.updateUserProfile(id, this.userProfile).subscribe(
       (data) => {
+        alert('Usuario actualizado');
         this.router.navigate(['']);
       },
       (err) => {
-        alert('Error al actualizar usuario');
-        this.router.navigate(['']);
+        this.isUpdateFail = true;
+        this.userProfile.userProfileImage = '';
+        this.errorMessage = err.error.message;
       }
     );
   }
 
   uploadUserProfileImage($event: any) {
-    const id = this.activatedRoute.snapshot.params['id'];
-    const name = "profileImage_" + id;
-    this.imageService.uploadImage($event, name);
+    let dateTime = new Date();
+    const directory = "image/userProfile/";
+    const name = 'userProfileImage_' + dateTime.getFullYear() + dateTime.getMonth() + dateTime.getDay() + dateTime.getHours() + dateTime.getMinutes() + dateTime.getSeconds();
+    this.imageService.uploadImage($event, directory, name);
+    this.newImage = true;
   }
 
-  cancel(): void {
+  closeMessage(): void {
+    this.isUpdateFail = false;
+  }
+
+  closeForm(): void {
     this.router.navigate(['']);
   }
 }

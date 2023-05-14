@@ -9,7 +9,7 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
   styleUrls: ['./hero.component.css'],
 })
 export class HeroComponent implements OnInit {
-  userProfile: UserProfile = new UserProfile('', '', '', '');
+  userProfile: UserProfile = new UserProfile('', '', '', '', '');
 
   userProfileService: UserProfileService = null;
 

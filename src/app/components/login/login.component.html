@@ -1,13 +1,19 @@
-<div class="container-fluid">
-    <h3>Iniciar sesion</h3>
-    <button class="btn-cancel" (click)="cancel()">X</button>
+<div class="container-fluid form">
+    <h3>
+        Iniciar Sesión
+        <button class="close-form" (click)="closeForm()">X</button>
+    </h3>
+    <div class="alert alert-danger" role="alert" *ngIf="isLoginFail">
+        {{errorMessage}}
+        <button class="close-alert" (click)="closeMessage()">X</button>
+    </div>
     <form class="custom-form" #f="ngForm" (ngSubmit)="onLogIn()" novalidate>
-        <label class="text-white" for="userName"><b>Username</b></label>
+        <label class="text-white" for="userName"><b>Nombre de usuario</b></label>
         <input type="text" placeholder="Enter user name" id="userName" name="userName" [(ngModel)]="userName"
-            required="required" />
-        <label class="text-white" for="password"><b>Password</b></label>
+            required="required" (focus)="closeMessage()" />
+        <label class="text-white" for="password"><b>Contraseña</b></label>
         <input type="password" placeholder="Enter Password" id="password" name="password" [(ngModel)]="password"
-            required="required" />
-        <button>Iniciar sesion</button>
+            required="required" (focus)="closeMessage()" />
+        <button>Iniciar sesión</button>
     </form>
 </div>

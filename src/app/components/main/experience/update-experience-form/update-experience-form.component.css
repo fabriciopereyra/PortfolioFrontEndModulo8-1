@@ -1,33 +1,7 @@
-div {
-    background: #3A3E4B;
-    height: 1000px;
-    padding-top: 110px;
-}
-
 h3 {
     text-align: center;
     font-size: 2rem;
     color: #FF9138;
-}
-
-form {
-    border: solid 2px #FF9138;
-    border-radius: 24px;
-    max-width: 60%;
-    padding: 30px;
-}
-
-.custom-form {
-    max-width: 60%;
-    margin: 0px auto;
-}
-
-.custom-form input {
-    display: block;
-    margin-bottom: 20px;
-    width: 100%;
-    border-radius: 24px;
-    padding: 10px;
 }
 
 button {
@@ -39,14 +13,65 @@ button {
 
 }
 
-.btn-cancel {
+form {
+    border: solid 2px #FF9138;
+    border-radius: 24px;
+    max-width: 60%;
+    padding: 30px;
+
+    margin: 10px auto;
+}
+
+.form {
+    background: #3A3E4B;
+    height: 100vh;
+}
+
+.close-form {
     position: absolute;
-    top: 120px;
     right: 20px;
     height: 20px;
-    width: 20px;
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.alert {
+    display: flex;
+    max-width: 30%;
+    margin: 10px auto;
+}
+
+.close-alert {
+    height: 20px;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-form {
+    margin: auto;
+    padding: 20px;
+}
+
+.custom-form input {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 24px;
+    padding: 10px;
+}
+
+.experience-image {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
+
+.image {
+    display: flex;
+    max-width: 30%;
+    margin: 10px auto;
 }

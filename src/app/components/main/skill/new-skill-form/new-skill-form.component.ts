@@ -13,6 +13,10 @@ export class NewSkillFormComponent {
 
   skillProgress: number;
 
+  isSaveFail = false;
+
+  errorMessage: string;
+
   constructor(private skillService: SkillService, private router: Router) {}
 
   saveSkill(): void {
@@ -23,13 +27,17 @@ export class NewSkillFormComponent {
         this.router.navigate(['']);
       },
       (err) => {
-        alert('Fallo');
-        this.router.navigate(['']);
+        this.isSaveFail = true;
+        this.errorMessage = err.error.message;
       }
     );
   }
 
-  cancel(): void {
+  closeMessage(): void {
+    this.isSaveFail = false;
+  }
+
+  closeForm(): void {
     this.router.navigate(['']);
   }
 }

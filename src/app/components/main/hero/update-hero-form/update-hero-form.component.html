@@ -1,22 +1,33 @@
-<div class="container-fluid" *ngIf="userProfile">
-    <h3>Actualizar Usuario</h3>
-    <button class="btn-cancel" (click)="cancel()">X</button>
-    <form #f="ngForm" (ngSubmit)="updateUserProfile()" novalidate class="custom-form">
+<div class="container-fluid form">
+    <h3>
+        Actualizar Usuario
+        <button class="close-form" (click)="closeForm()">X</button>
+    </h3>
+    <div class="alert alert-danger" role="alert" *ngIf="isUpdateFail">
+        {{errorMessage}}
+        <button class="close-alert" (click)="closeMessage()">X</button>
+    </div>
+    <div class="image" *ngIf="userProfile.userProfileImage">
+        <img class="hero-image" [src]="userProfile.userProfileImage" alt="Foto de perfil ">
+    </div>
+    <form class="custom-form" #f="ngForm" (ngSubmit)="updateUserProfile()" novalidate>
         <label class="text-white" for="userProfileName"><b>Nombre</b></label>
         <input type="text" placeholder="Ingrese el nombre" id="userProfileName" name="userProfileName"
-            [(ngModel)]="userProfile.userProfileName">
+            [(ngModel)]="userProfile.userProfileName" required="required" (focus)="closeMessage()">
         <label class="text-white" for="userProfileSurname"><b>Apellido</b></label>
         <input type="text" placeholder="Ingrese la URL" id="userProfileSurname" name="userProfileSurname"
-            [(ngModel)]="userProfile.userProfileSurname" required="required">
-        <label class="text-white" for="userProfileAbout"><b>Descripcion</b></label>
-        <input type="text" placeholder="Ingrese la Descripcion" id="userProfileAbout" name="userProfileAbout"
-            [(ngModel)]="userProfile.userProfileAbout" required="required">
+            [(ngModel)]="userProfile.userProfileSurname" required="required" (focus)="closeMessage()">
+        <label class="text-white" for="userProfileTitle"><b>Titulo</b></label>
+        <input type="text" placeholder="Ingrese el titulo" id="userProfileTitle" name="userProfileTitle"
+            [(ngModel)]="userProfile.userProfileTitle" required="required" (focus)="closeMessage()">
+        <label class="text-white" for="userProfileAbout"><b>Descripción</b></label>
+        <input type="text" placeholder="Ingrese una descripción" id="userProfileAbout" name="userProfileAbout"
+            [(ngModel)]="userProfile.userProfileAbout" required="required" (focus)="closeMessage()">
         <label class="text-white" for="userProfileImage"><b>Imagen</b></label>
-        <input type="file" placeholder="Ingrese la imagen" id="userProfileImage" name="userProfileImage"
-            [(ngModel)]="userProfile.userProfileImage" (change)="uploadUserProfileImage($event)"
-            accept=".jpg, .jpeg, .png">
-        <div>
-            <img class="section-hero-header-image" [src]="imageService.url" alt=" ">
+        <input class="text-white" type="file" id="userProfileImage" name="userProfileImage"
+            (change)="uploadUserProfileImage($event)" accept=".jpg, .jpeg, .png">
+        <div *ngIf="newImage">
+            <img class="hero-image" [src]="imageService.url" alt="Foto de perfil ">
         </div>
         <button>Actualizar usuario</button>
     </form>

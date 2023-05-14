@@ -5,17 +5,18 @@
       <i class="bi bi-plus-square-dotted" routerLink="/newSkillForm" *ngIf="isLogged"></i>
     </h3>
   </header>
-  <div class="section-body" *ngFor="let skill of skills">
-    <article>
-      <h4 class="text-white">{{skill.skillName}}</h4>
-      <img class="section-hero-article-stack-icon" src="assets/img/iconsCss.svg" alt="css">
-      <ngb-progressbar [striped]="true" [animated]="true" type="primary" height="30px" [value]="skill.skillProgress"
+  <div class="row section-body">
+    <div class="col-4 progressbar" *ngFor="let skill of skills">
+      <h4 class="text-white">
+        {{skill.skillName}}
+        <i class="bi bi-pencil-square" routerLink="/updateSkillForm/{{skill.id}}" *ngIf="isLogged"></i>
+        <i class="bi bi-trash-fill" (click)="deleteSkill(skill.id)" *ngIf="isLogged"></i>
+      </h4>
+      <ngb-progressbar [striped]="true" [animated]="true" type="info" height="30px" [value]="skill.skillProgress"
         class="animated-progress">
         <h4 class="text-white">{{skill.skillProgress}}%</h4>
       </ngb-progressbar>
-      <i class="bi bi-pencil-square" routerLink="/updateSkillForm/{{skill.id}}" *ngIf="isLogged"></i>
-      <i class="bi bi-trash-fill" (click)="deleteSkill(skill.id)" *ngIf="isLogged"></i>
-    </article>
+    </div>
   </div>
   <br>
 </section>

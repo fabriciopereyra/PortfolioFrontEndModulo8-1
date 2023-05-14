@@ -6,26 +6,34 @@
     </h3>
   </header>
   <div class="section-body" *ngFor="let experience of experiences">
-    <article class="section-experience-article d-flex flex-wrap">
-      <a [href]="experience.experienceUrl" target="_blank" rel="noopener noreferrer">
-        <img src=" assets/img/iconArgProSM.ico" [alt]="experience.experienceUrl">
-      </a>
-      <ul class="section-experience-text text-white">
-        <li>
-          <h4>Puesto:</h4>
-          <p>{{experience.experienceJobTitle}}</p>
-        </li>
-        <li>
-          <h4>Periodo:</h4>
-          <p>{{experience.experiencePeriod}}</p>
-        </li>
-        <li>
-          <h4>Actividad:</h4>
-          <p>{{experience.experienceActivity}}</p>
-        </li>
-      </ul>
-      <i class="bi bi-pencil-square" routerLink="/updateExperienceForm/{{experience.id}}" *ngIf="isLogged"></i>
-      <i class="bi bi-trash-fill" (click)="deleteExperience(experience.id)" *ngIf="isLogged"></i>
+    <article class="section-experience-article">
+      <div class="row">
+        <div class="col-md-3">
+          <a [href]="experience.experienceUrl" target="_blank" rel="noopener noreferrer">
+            <img src={{experience.experienceImage}} [alt]="experience.experienceUrl">
+          </a>
+        </div>
+        <div class="col-md-9">
+          <ul class="section-experience-text text-white">
+            <li>
+              <h4>Puesto:</h4>
+              <p>{{experience.experienceJobTitle}}</p>
+            </li>
+            <li>
+              <h4>Periodo:</h4>
+              <p>{{experience.experiencePeriod}}</p>
+            </li>
+            <li>
+              <h4>Actividad:</h4>
+              <p>{{experience.experienceActivity}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h3>
+        <i class="bi bi-pencil-square" routerLink="/updateExperienceForm/{{experience.id}}" *ngIf="isLogged"></i>
+        <i class="bi bi-trash-fill" (click)="deleteExperience(experience.id)" *ngIf="isLogged"></i>
+      </h3>
     </article>
   </div>
   <br>

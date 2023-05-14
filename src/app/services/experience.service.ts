@@ -16,12 +16,12 @@ export class ExperienceService {
     private tokenService: TokenService
   ) {}
 
-  public detail(id: number): Observable<Experience> {
-    return this.httpClient.get<Experience>(this.URL + `detail/${id}`);
+  public getExperience(id: number): Observable<Experience> {
+    return this.httpClient.get<Experience>(this.URL + `getExperience/${id}`);
   }
 
-  public findAll(): Observable<Experience[]> {
-    return this.httpClient.get<Experience[]>(this.URL + 'findAll');
+  public getExperiences(): Observable<Experience[]> {
+    return this.httpClient.get<Experience[]>(this.URL + 'getExperiences');
   }
 
   public saveExperience(experience: Experience): Observable<any> {
@@ -31,34 +31,31 @@ export class ExperienceService {
       }),
     };
     return this.httpClient.post<any>(
-      this.URL + `create`,
+      this.URL + `saveExperience`,
       experience,
       httpOptions
     );
   }
 
-  public update(id: number, experience: Experience): Observable<any> {
+  public updateExperience(id: number, experience: Experience): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Bearer' + this.tokenService.getToken(),
       }),
     };
     return this.httpClient.put<any>(
-      this.URL + `update/${id}`,
+      this.URL + `updateExperience/${id}`,
       experience,
       httpOptions
     );
   }
 
-  public delete(id: number): Observable<any> {
+  public deleteExperience(id: number): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Bearer' + this.tokenService.getToken(),
       }),
     };
-    return this.httpClient.delete<any>(
-      this.URL + `delete/${id}`,
-      httpOptions
-    );
+    return this.httpClient.delete<any>(this.URL + `deleteExperience/${id}`, httpOptions);
   }
 }
