@@ -20,6 +20,8 @@ export class NewExperienceFormComponent implements OnInit {
   experiencePeriod: string = '';
 
   experienceActivity: string = '';
+  
+  experienceInstitution: string = '';
 
   isSaveFail = false;
 
@@ -43,7 +45,8 @@ export class NewExperienceFormComponent implements OnInit {
       this.imageService.url,
       this.experienceJobTitle,
       this.experiencePeriod,
-      this.experienceActivity
+      this.experienceActivity,
+      this.experienceInstitution
     );
     this.experienceService.saveExperience(experience).subscribe(
       (data) => {

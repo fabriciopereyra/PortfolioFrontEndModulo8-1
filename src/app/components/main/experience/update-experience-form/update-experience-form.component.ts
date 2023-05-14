@@ -10,7 +10,7 @@ import { ImageService } from 'src/app/services/image.service';
   styleUrls: ['./update-experience-form.component.css'],
 })
 export class UpdateExperienceFormComponent implements OnInit {
-  experience: Experience = new Experience('', '', '', '', '');
+  experience: Experience = new Experience('', '', '', '', '', '');
   
   isUpdateFail = false;
 

@@ -14,6 +14,9 @@
         <label class="text-white" for="experienceJobTitle"><b>Puesto</b></label>
         <input type="text" placeholder="Ingrese el puesto" id="experienceJobTitle" name="experienceJobTitle"
             [(ngModel)]="experience.experienceJobTitle" required="required" (focus)="closeMessage()">
+        <label class="text-white" for="experienceInstitution"><b>Empresa/Institución</b></label>
+        <input type="text" placeholder="Ingrese la empresa/institución" id="experienceInstitution" name="experienceInstitution"
+            [(ngModel)]="experience.experienceInstitution" required="required" (focus)="closeMessage()">
         <label class="text-white" for="experiencePeriod"><b>Periodo</b></label>
         <input type="text" placeholder="Ingrese el periodo" id="experiencePeriod" name="experiencePeriod"
             [(ngModel)]="experience.experiencePeriod" required="required" (focus)="closeMessage()">

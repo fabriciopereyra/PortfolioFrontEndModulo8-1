@@ -60,5 +60,10 @@ nav {
         border-radius: 25px ;
         width: 100%;
     }
+    
+    .navbar-nav {
+        background-color: #3A3E4B;
+    }
+    
 
 }

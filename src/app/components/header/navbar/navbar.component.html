@@ -1,23 +1,16 @@
 <nav class="navbar navbar-expand-md fixed-top" [class.nav-transparent]="nav">
-
     <div class="container-fluid">
-
-        <!-- ArgentinaProgramaImg -->
         <a class="navbar-brand d-none d-lg-block" href="https://argentinaprograma.inti.gob.ar/" target="_blank"
             rel="noopener noreferrer">
             <img class="navbar-brand-image" src="../../../../assets/img/iconArgPro.png" alt="ArgentinaPrograma">
         </a>
-
         <a class="navbar-brand d-block d-lg-none" href="https://argentinaprograma.inti.gob.ar/" target="_blank"
             rel="noopener noreferrer">
             <img class="navbar-brand-image" src="../../../../assets/img/iconArgProSM.ico" alt="ArgentinaPrograma">
         </a>
-
-        <!--Navbar Button-->
         <button class="navbar-toggler button-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="navbar-collapse" [ngbCollapse]="isMenuCollapsed">
             <ul class="navbar-nav justify-content-between text-center navbar-length ms-auto">
                 <li class="nav-item">
